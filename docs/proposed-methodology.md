@@ -18,6 +18,12 @@ Store a manifest in JSON/CSV with source URLs, retrieval timestamps, reference p
 
 Use compressed Parquet for normalised working data, partitioned by product/year/month; retain coordinates and source provenance. Keep street crime, outcomes and stop-and-search in separate datasets and schemas. DuckDB can query Parquet without a long-running database. GeoPackage is suitable for a small reviewed boundary collection with explicit CRS and vintage. Keep raw files and large working outputs out of commits. Git should hold code, configuration, small manifests, documentation and test fixtures with appropriate licences; document storage location and backup requirements.
 
+## Acquisition and comparability gates
+
+Use the audit's [endpoint-level source register](source-geography-feasibility-audit.md#source-register-endpoints-coverage-and-acquisition-route). Resolve versioned URLs, formats, dates, licences and official geography before implementing acquisition. Separate automatic metadata/file requests from manual edition, table and boundary decisions. A manually supplied official export needs recorded selections and provenance, and must pass the same validation as an automatically acquired file; do not accept typed counts or undocumented replacements.
+
+Maintain two independent records: an acquisition matrix (advertised, retrieved, parsed and validated status by product/force/month) and a comparability log for each proposed combination or comparison. The latter must assess observational unit, date semantics, inclusion rules, categories, recording practice, source revisions, spatial anonymisation, boundary vintage and denominator population universe. Assign compatible, compatible with a documented transformation, incompatible or unresolved status, with evidence. A successful download or parse must never set comparability status automatically. Block affected trends, combined sources or rates until their required comparability checks pass, even where file integrity is valid.
+
 ## Assignment and overlap policy
 
 1. Validate official polygons, codes, vintage, CRS, geometry validity and extent. Reproject publication coordinates from their documented CRS for distance calculations; British National Grid (EPSG:27700) is a candidate metric CRS once verified. Never calculate metre distances in longitude/latitude degrees.
