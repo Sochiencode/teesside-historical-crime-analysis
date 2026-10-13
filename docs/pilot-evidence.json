@@ -1,0 +1,864 @@
+{
+  "audit_date": "2026-10-13",
+  "scope": "Limited file, geography and denominator feasibility; no research findings",
+  "raw_root": "/workspace/crime-pilot/raw",
+  "archive_plan": {
+    "advertised_snapshots": 153,
+    "requested_months": 140,
+    "maximum_requested_months_per_snapshot": 36,
+    "chosen": [
+      {
+        "url": "https://data.police.uk/data/archive/2017-12.zip",
+        "start": "2015-01",
+        "end": "2017-12",
+        "size": "1.4 GB",
+        "md5": "3a8e1a838273c122e3375786dcb73de5",
+        "publisher_md5_valid": true
+      },
+      {
+        "url": "https://data.police.uk/data/archive/2020-12.zip",
+        "start": "2018-01",
+        "end": "2020-12",
+        "size": "1.6 GB",
+        "md5": "09d6cd8612293f0aaddca03aee40f723",
+        "publisher_md5_valid": true
+      },
+      {
+        "url": "https://data.police.uk/data/archive/2023-12.zip",
+        "start": "2021-01",
+        "end": "2023-12",
+        "size": "1.6 GB",
+        "md5": "a493c1b149f56cfbacce2a518ee555be",
+        "publisher_md5_valid": true
+      },
+      {
+        "url": "https://data.police.uk/data/archive/2026-08.zip",
+        "start": "2023-09",
+        "end": "2026-08",
+        "size": "1.6 GB",
+        "md5": "564ae63b049cf2dd6f21cd4f784bb494",
+        "publisher_md5_valid": true
+      }
+    ],
+    "lower_bound": 4,
+    "malformed_unselected_md5": [
+      "https://data.police.uk/data/archive/2019-06.zip"
+    ],
+    "caveat": "Listing coverage only; not member completeness or comparability"
+  },
+  "current_export": {
+    "url": "https://policeuk-data.s3.amazonaws.com/download/bc1198b715202d1e647cd36724a7a5845fe153cd.zip",
+    "retrieved_utc": "2026-10-13T03:15:49.593498+00:00",
+    "bytes": 398649,
+    "sha256": "6290154bc21459765dfb7e577d27a844870d7af979f663d219fe68ebd9323b1e",
+    "fetch_url": "https://data.police.uk/data/fetch/1d98f4df-34de-4d18-9bfb-17c932f53f01/",
+    "selections": {
+      "date_from": "2026-08",
+      "date_to": "2026-08",
+      "forces": "cleveland",
+      "include_crime": "on"
+    },
+    "member": "2026-08/2026-08-cleveland-street.csv",
+    "member_sha256": "2a41598b9ab627aa40b22bdacb9384916fb10c4f619c721ab40f9045d044031c",
+    "profile": {
+      "columns": [
+        "Crime ID",
+        "Month",
+        "Reported by",
+        "Falls within",
+        "Longitude",
+        "Latitude",
+        "Location",
+        "LSOA code",
+        "LSOA name",
+        "Crime type",
+        "Last outcome category",
+        "Context"
+      ],
+      "rows": 8592,
+      "months": [
+        "2026-08"
+      ],
+      "categories": [
+        "Anti-social behaviour",
+        "Bicycle theft",
+        "Burglary",
+        "Criminal damage and arson",
+        "Drugs",
+        "Other crime",
+        "Other theft",
+        "Possession of weapons",
+        "Public order",
+        "Robbery",
+        "Shoplifting",
+        "Theft from the person",
+        "Vehicle crime",
+        "Violence and sexual offences"
+      ],
+      "reported_by": [
+        "Cleveland Police"
+      ],
+      "falls_within": [
+        "Cleveland Police"
+      ],
+      "missing_coordinates": 0,
+      "missing_crime_ids": 1167,
+      "missing_lsoa": 0
+    }
+  },
+  "historical_samples": [
+    {
+      "snapshot": "2017-12",
+      "transfer_bytes": 906445,
+      "samples": [
+        {
+          "url": "https://data.police.uk/data/archive/2017-12.zip",
+          "retrieved_utc": "2026-10-13T03:15:56.787169+00:00",
+          "bytes": 1289621,
+          "sha256": "1f1777afbaa2f6a02e44bfc788af3ef3f049b575719282ffb940acd9a63a0cd2",
+          "member": "2015-01/2015-01-cleveland-street.csv",
+          "crc32": "af1b3b86",
+          "archive_url": "https://policeuk-data.s3.amazonaws.com/archive/2017-12.zip",
+          "archive_bytes": 1536527524,
+          "archive_etag": "\"3a8e1a838273c122e3375786dcb73de5\"",
+          "archive_last_modified": "Mon, 02 Jun 2025 11:31:43 GMT",
+          "whole_archive_checksum_verified": false,
+          "profile": {
+            "columns": [
+              "Crime ID",
+              "Month",
+              "Reported by",
+              "Falls within",
+              "Longitude",
+              "Latitude",
+              "Location",
+              "LSOA code",
+              "LSOA name",
+              "Crime type",
+              "Last outcome category",
+              "Context"
+            ],
+            "rows": 6552,
+            "months": [
+              "2015-01"
+            ],
+            "categories": [
+              "Anti-social behaviour",
+              "Bicycle theft",
+              "Burglary",
+              "Criminal damage and arson",
+              "Drugs",
+              "Other crime",
+              "Other theft",
+              "Possession of weapons",
+              "Public order",
+              "Robbery",
+              "Shoplifting",
+              "Theft from the person",
+              "Vehicle crime",
+              "Violence and sexual offences"
+            ],
+            "reported_by": [
+              "Cleveland Police"
+            ],
+            "falls_within": [
+              "Cleveland Police"
+            ],
+            "missing_coordinates": 0,
+            "missing_crime_ids": 2918,
+            "missing_lsoa": 0
+          }
+        },
+        {
+          "url": "https://data.police.uk/data/archive/2017-12.zip",
+          "retrieved_utc": "2026-10-13T03:15:59.403342+00:00",
+          "bytes": 1513265,
+          "sha256": "af807f3c1ea0963f1e8e36dc741d29d0a1386d685509a2e4b8242897f06be10a",
+          "member": "2017-12/2017-12-cleveland-street.csv",
+          "crc32": "1c78d18d",
+          "archive_url": "https://policeuk-data.s3.amazonaws.com/archive/2017-12.zip",
+          "archive_bytes": 1536527524,
+          "archive_etag": "\"3a8e1a838273c122e3375786dcb73de5\"",
+          "archive_last_modified": "Mon, 02 Jun 2025 11:31:43 GMT",
+          "whole_archive_checksum_verified": false,
+          "profile": {
+            "columns": [
+              "Crime ID",
+              "Month",
+              "Reported by",
+              "Falls within",
+              "Longitude",
+              "Latitude",
+              "Location",
+              "LSOA code",
+              "LSOA name",
+              "Crime type",
+              "Last outcome category",
+              "Context"
+            ],
+            "rows": 7614,
+            "months": [
+              "2017-12"
+            ],
+            "categories": [
+              "Anti-social behaviour",
+              "Bicycle theft",
+              "Burglary",
+              "Criminal damage and arson",
+              "Drugs",
+              "Other crime",
+              "Other theft",
+              "Possession of weapons",
+              "Public order",
+              "Robbery",
+              "Shoplifting",
+              "Theft from the person",
+              "Vehicle crime",
+              "Violence and sexual offences"
+            ],
+            "reported_by": [
+              "Cleveland Police"
+            ],
+            "falls_within": [
+              "Cleveland Police"
+            ],
+            "missing_coordinates": 0,
+            "missing_crime_ids": 3100,
+            "missing_lsoa": 0
+          }
+        }
+      ]
+    },
+    {
+      "snapshot": "2023-12",
+      "transfer_bytes": 976977,
+      "samples": [
+        {
+          "url": "https://data.police.uk/data/archive/2023-12.zip",
+          "retrieved_utc": "2026-10-13T03:07:38.628415+00:00",
+          "bytes": 1425657,
+          "sha256": "aa3ce43eb0cdfdd8b4656dd508bc06d917c1281b9b4aecca4b17e0aec5e55ee0",
+          "member": "2021-01/2021-01-cleveland-street.csv",
+          "crc32": "10582483",
+          "archive_url": "https://policeuk-data.s3.amazonaws.com/archive/2023-12.zip",
+          "archive_bytes": 1706935130,
+          "archive_etag": "\"a493c1b149f56cfbacce2a518ee555be\"",
+          "archive_last_modified": "Mon, 02 Jun 2025 11:50:08 GMT",
+          "whole_archive_checksum_verified": false,
+          "profile": {
+            "columns": [
+              "Crime ID",
+              "Month",
+              "Reported by",
+              "Falls within",
+              "Longitude",
+              "Latitude",
+              "Location",
+              "LSOA code",
+              "LSOA name",
+              "Crime type",
+              "Last outcome category",
+              "Context"
+            ],
+            "rows": 6676,
+            "months": [
+              "2021-01"
+            ],
+            "categories": [
+              "Anti-social behaviour",
+              "Bicycle theft",
+              "Burglary",
+              "Criminal damage and arson",
+              "Drugs",
+              "Other crime",
+              "Other theft",
+              "Possession of weapons",
+              "Public order",
+              "Robbery",
+              "Shoplifting",
+              "Theft from the person",
+              "Vehicle crime",
+              "Violence and sexual offences"
+            ],
+            "reported_by": [
+              "Cleveland Police"
+            ],
+            "falls_within": [
+              "Cleveland Police"
+            ],
+            "missing_coordinates": 0,
+            "missing_crime_ids": 1928,
+            "missing_lsoa": 0
+          }
+        },
+        {
+          "url": "https://data.police.uk/data/archive/2023-12.zip",
+          "retrieved_utc": "2026-10-13T03:07:41.324624+00:00",
+          "bytes": 1463769,
+          "sha256": "6e33b21efae465b2c34b2efe7328bb39caa15e31ee35c5396a9365d7ac8b5861",
+          "member": "2023-12/2023-12-cleveland-street.csv",
+          "crc32": "7428bd93",
+          "archive_url": "https://policeuk-data.s3.amazonaws.com/archive/2023-12.zip",
+          "archive_bytes": 1706935130,
+          "archive_etag": "\"a493c1b149f56cfbacce2a518ee555be\"",
+          "archive_last_modified": "Mon, 02 Jun 2025 11:50:08 GMT",
+          "whole_archive_checksum_verified": false,
+          "profile": {
+            "columns": [
+              "Crime ID",
+              "Month",
+              "Reported by",
+              "Falls within",
+              "Longitude",
+              "Latitude",
+              "Location",
+              "LSOA code",
+              "LSOA name",
+              "Crime type",
+              "Last outcome category",
+              "Context"
+            ],
+            "rows": 6523,
+            "months": [
+              "2023-12"
+            ],
+            "categories": [
+              "Anti-social behaviour",
+              "Bicycle theft",
+              "Burglary",
+              "Criminal damage and arson",
+              "Drugs",
+              "Other crime",
+              "Other theft",
+              "Possession of weapons",
+              "Public order",
+              "Robbery",
+              "Shoplifting",
+              "Theft from the person",
+              "Vehicle crime",
+              "Violence and sexual offences"
+            ],
+            "reported_by": [
+              "Cleveland Police"
+            ],
+            "falls_within": [
+              "Cleveland Police"
+            ],
+            "missing_coordinates": 0,
+            "missing_crime_ids": 928,
+            "missing_lsoa": 0
+          }
+        }
+      ]
+    },
+    {
+      "snapshot": "2026-08",
+      "transfer_bytes": 1101323,
+      "samples": [
+        {
+          "url": "https://data.police.uk/data/archive/2026-08.zip",
+          "retrieved_utc": "2026-10-13T03:10:23.618148+00:00",
+          "bytes": 1482331,
+          "sha256": "7aab7d5a6df7746029f7c4c685d935266a0ddc84823cdf96a7f0d7bc982f928a",
+          "member": "2023-12/2023-12-cleveland-street.csv",
+          "crc32": "6150a8b4",
+          "archive_url": "https://policeuk-data.s3.amazonaws.com/archive/2026-08.zip",
+          "archive_bytes": 1733535664,
+          "archive_etag": "\"7c70a092a57415e298fd090b8164e853-207\"",
+          "archive_last_modified": "Wed, 30 Sep 2026 14:06:14 GMT",
+          "whole_archive_checksum_verified": false,
+          "profile": {
+            "columns": [
+              "Crime ID",
+              "Month",
+              "Reported by",
+              "Falls within",
+              "Longitude",
+              "Latitude",
+              "Location",
+              "LSOA code",
+              "LSOA name",
+              "Crime type",
+              "Last outcome category",
+              "Context"
+            ],
+            "rows": 6523,
+            "months": [
+              "2023-12"
+            ],
+            "categories": [
+              "Anti-social behaviour",
+              "Bicycle theft",
+              "Burglary",
+              "Criminal damage and arson",
+              "Drugs",
+              "Other crime",
+              "Other theft",
+              "Possession of weapons",
+              "Public order",
+              "Robbery",
+              "Shoplifting",
+              "Theft from the person",
+              "Vehicle crime",
+              "Violence and sexual offences"
+            ],
+            "reported_by": [
+              "Cleveland Police"
+            ],
+            "falls_within": [
+              "Cleveland Police"
+            ],
+            "missing_coordinates": 0,
+            "missing_crime_ids": 928,
+            "missing_lsoa": 0
+          }
+        },
+        {
+          "url": "https://data.police.uk/data/archive/2026-08.zip",
+          "retrieved_utc": "2026-10-13T03:10:26.334291+00:00",
+          "bytes": 1921338,
+          "sha256": "2a41598b9ab627aa40b22bdacb9384916fb10c4f619c721ab40f9045d044031c",
+          "member": "2026-08/2026-08-cleveland-street.csv",
+          "crc32": "aa461726",
+          "archive_url": "https://policeuk-data.s3.amazonaws.com/archive/2026-08.zip",
+          "archive_bytes": 1733535664,
+          "archive_etag": "\"7c70a092a57415e298fd090b8164e853-207\"",
+          "archive_last_modified": "Wed, 30 Sep 2026 14:06:14 GMT",
+          "whole_archive_checksum_verified": false,
+          "profile": {
+            "columns": [
+              "Crime ID",
+              "Month",
+              "Reported by",
+              "Falls within",
+              "Longitude",
+              "Latitude",
+              "Location",
+              "LSOA code",
+              "LSOA name",
+              "Crime type",
+              "Last outcome category",
+              "Context"
+            ],
+            "rows": 8592,
+            "months": [
+              "2026-08"
+            ],
+            "categories": [
+              "Anti-social behaviour",
+              "Bicycle theft",
+              "Burglary",
+              "Criminal damage and arson",
+              "Drugs",
+              "Other crime",
+              "Other theft",
+              "Possession of weapons",
+              "Public order",
+              "Robbery",
+              "Shoplifting",
+              "Theft from the person",
+              "Vehicle crime",
+              "Violence and sexual offences"
+            ],
+            "reported_by": [
+              "Cleveland Police"
+            ],
+            "falls_within": [
+              "Cleveland Police"
+            ],
+            "missing_coordinates": 0,
+            "missing_crime_ids": 1167,
+            "missing_lsoa": 0
+          }
+        }
+      ]
+    }
+  ],
+  "boundary_checks": {
+    "valid_geometries": 5,
+    "pairwise_overlaps": [
+      {
+        "a": "E05012441",
+        "b": "E05012442",
+        "overlap_m2": 0.0
+      },
+      {
+        "a": "E05012441",
+        "b": "E05012456",
+        "overlap_m2": 0.0
+      },
+      {
+        "a": "E05012441",
+        "b": "E06000002",
+        "overlap_m2": 0.0
+      },
+      {
+        "a": "E05012442",
+        "b": "E05012456",
+        "overlap_m2": 0.0
+      },
+      {
+        "a": "E05012442",
+        "b": "E06000002",
+        "overlap_m2": 0.0
+      },
+      {
+        "a": "E05012456",
+        "b": "E06000002",
+        "overlap_m2": 0.0
+      }
+    ],
+    "ward_area_outside_redcar_cleveland_m2": {
+      "E05012441": 0.0,
+      "E05012442": 0.0,
+      "E05012456": 0.0
+    },
+    "crs": "EPSG:27700",
+    "vintage": "May 2025"
+  },
+  "boundary_2015_2025": [
+    {
+      "name": "Eston",
+      "code2015": "E05001508",
+      "code2025": "E05012441",
+      "old_valid": true,
+      "new_valid": true,
+      "polygons_equal": false,
+      "symmetric_difference_m2": 158450.3128375064
+    },
+    {
+      "name": "Grangetown",
+      "code2015": "E05001509",
+      "code2025": "E05012442",
+      "old_valid": true,
+      "new_valid": true,
+      "polygons_equal": false,
+      "symmetric_difference_m2": 922207.2613517153
+    },
+    {
+      "name": "South Bank",
+      "code2015": "E05001522",
+      "code2025": "E05012456",
+      "old_valid": true,
+      "new_valid": true,
+      "polygons_equal": false,
+      "symmetric_difference_m2": 16324459.396094294
+    }
+  ],
+  "boundary_2022_2025": [
+    {
+      "code": "E05012441",
+      "name": "Eston",
+      "polygons_equal": false,
+      "symmetric_difference_m2": 104.7992105728984,
+      "hausdorff_m": 0.8222372039176684
+    },
+    {
+      "code": "E05012442",
+      "name": "Grangetown",
+      "polygons_equal": false,
+      "symmetric_difference_m2": 39.521148533728514,
+      "hausdorff_m": 0.8222372039176684
+    },
+    {
+      "code": "E05012456",
+      "name": "South Bank",
+      "polygons_equal": false,
+      "symmetric_difference_m2": 11206.923719725175,
+      "hausdorff_m": 43.56591807888725
+    }
+  ],
+  "population_acquisition": [
+    {
+      "url": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2002_1/def.sdmx.json",
+      "retrieved_utc": "2026-10-13T03:15:14.983693+00:00",
+      "bytes": 4529,
+      "sha256": "34fc9172527a48ef2de9737f6d41819bb2e5a10199bbf287869245c4341323da",
+      "profile": null
+    },
+    {
+      "url": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2002_1/time.def.sdmx.json",
+      "retrieved_utc": "2026-10-13T03:15:16.330141+00:00",
+      "bytes": 10780,
+      "sha256": "04006d87562f3aecb22c165121ba781a8a770543f4048375b37bd3a3dc8546e4",
+      "profile": null
+    },
+    {
+      "url": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2010_1/def.sdmx.json",
+      "retrieved_utc": "2026-10-13T03:15:17.660138+00:00",
+      "bytes": 2526,
+      "sha256": "fdc8e7ecf38d94bd7e95d3f867a0bf78b72741f291bab11c537577545e545d92",
+      "profile": null
+    },
+    {
+      "url": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2010_1/time.def.sdmx.json",
+      "retrieved_utc": "2026-10-13T03:15:18.598909+00:00",
+      "bytes": 5990,
+      "sha256": "03fb24c7a12cb7e8eab034697619ef845768c1345155421b994c85e3782e9d93",
+      "profile": null
+    },
+    {
+      "url": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2014_1/def.sdmx.json",
+      "retrieved_utc": "2026-10-13T03:15:19.520169+00:00",
+      "bytes": 4051,
+      "sha256": "ea988e54ece6025c47189e0ce28d89f5cf37db8a51b6c2a7b42fa68b9f8c2d52",
+      "profile": null
+    },
+    {
+      "url": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2014_1/time.def.sdmx.json",
+      "retrieved_utc": "2026-10-13T03:15:19.963559+00:00",
+      "bytes": 8474,
+      "sha256": "e14765ea8b4fec55322e52bdabb056ad0cb1bc364bb977c979c197a0013edb78",
+      "profile": null
+    },
+    {
+      "url": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2002_1.data.csv?geography=E06000002&date=2015%2C2025&gender=0&c_age=200&measures=20100",
+      "retrieved_utc": "2026-10-13T03:15:20.913173+00:00",
+      "bytes": 1170,
+      "sha256": "41f9012ab32a9cabef9e6d72b223f7433c46706bc0a9387f5bbf61748f59016a",
+      "profile": [
+        {
+          "code": "E06000002",
+          "geography_type": "local authorities: county / unitary (as of April 2023)",
+          "year": "2015",
+          "status": "Normal Value",
+          "age": "All Ages",
+          "gender": "Total"
+        },
+        {
+          "code": "E06000002",
+          "geography_type": "local authorities: county / unitary (as of April 2023)",
+          "year": "2025",
+          "status": "Normal Value",
+          "age": "All Ages",
+          "gender": "Total"
+        }
+      ]
+    },
+    {
+      "url": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2014_1.data.csv?geography=E05012441%2CE05012442%2CE05012456&date=2024&gender=0&c_age=200&measures=20100",
+      "retrieved_utc": "2026-10-13T03:15:21.780935+00:00",
+      "bytes": 1380,
+      "sha256": "f3305af775448b2baeaa07c3a288ce64627c27627fde596e57ce9b72ce98cee5",
+      "profile": [
+        {
+          "code": "E05012441",
+          "geography_type": "2022 wards",
+          "year": "2024",
+          "status": "Normal Value",
+          "age": "All Ages",
+          "gender": "Total"
+        },
+        {
+          "code": "E05012442",
+          "geography_type": "2022 wards",
+          "year": "2024",
+          "status": "Normal Value",
+          "age": "All Ages",
+          "gender": "Total"
+        },
+        {
+          "code": "E05012456",
+          "geography_type": "2022 wards",
+          "year": "2024",
+          "status": "Normal Value",
+          "age": "All Ages",
+          "gender": "Total"
+        }
+      ]
+    },
+    {
+      "url": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2014_1.data.csv?geography=E05012441%2CE05012442%2CE05012456&date=2015&gender=0&c_age=200&measures=20100",
+      "retrieved_utc": "2026-10-13T03:15:22.392657+00:00",
+      "bytes": 1380,
+      "sha256": "d591f577d3b6467e3b2890eaf8ce7e6fd3cea0d15c45064ef4eeb24038b8d7ac",
+      "profile": [
+        {
+          "code": "E05012441",
+          "geography_type": "2022 wards",
+          "year": "2015",
+          "status": "Normal Value",
+          "age": "All Ages",
+          "gender": "Total"
+        },
+        {
+          "code": "E05012442",
+          "geography_type": "2022 wards",
+          "year": "2015",
+          "status": "Normal Value",
+          "age": "All Ages",
+          "gender": "Total"
+        },
+        {
+          "code": "E05012456",
+          "geography_type": "2022 wards",
+          "year": "2015",
+          "status": "Normal Value",
+          "age": "All Ages",
+          "gender": "Total"
+        }
+      ]
+    },
+    {
+      "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+      "retrieved_utc": "2026-10-13T03:15:23.502725+00:00",
+      "bytes": 27371,
+      "sha256": "2ac1486ab204b813202dae46fb063d3173978ce601169c3b2b9046a3cb1b70d8",
+      "profile": null
+    }
+  ],
+  "boundary_sources": [
+    {
+      "name": "May 2025 wards",
+      "url": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/WD_MAY_2025_UK_BFC_V2/FeatureServer/0/query?where=LAD25CD%3D%27E06000003%27+AND+WD25CD+IN+%28%27E05012441%27%2C%27E05012442%27%2C%27E05012456%27%29&outFields=%2A&outSR=27700&f=geojson&returnGeometry=true",
+      "raw_file": "scoped-wards-2025.geojson",
+      "sha256": "5bc00d9aa6e9e23ad73eb04dfa70e4627f4663e807cc991e3389ba2ee67b43f0",
+      "bytes": 187646,
+      "file_saved_utc": "2026-10-13T03:12:21.156743+00:00",
+      "crs": "EPSG:27700",
+      "feature_codes": [
+        "E05012441",
+        "E05012442",
+        "E05012456"
+      ],
+      "licence_reference": "https://www.ons.gov.uk/methodology/geography/licences",
+      "licence_status": "Reference in ONS asset metadata retrieved; full geographic terms blocked HTTP 403"
+    },
+    {
+      "name": "May 2025 authorities",
+      "url": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD_MAY_2025_UK_BFC_V2/FeatureServer/0/query?where=LAD25CD+IN+%28%27E06000002%27%2C%27E06000003%27%29&outFields=%2A&outSR=27700&f=geojson&returnGeometry=true",
+      "raw_file": "scoped-lad-2025.geojson",
+      "sha256": "2675c780845e18e278e22d166e839ea806c119b14f11d80431592931bda0cb0e",
+      "bytes": 633616,
+      "file_saved_utc": "2026-10-13T03:12:22.175260+00:00",
+      "crs": "EPSG:27700",
+      "feature_codes": [
+        "E06000002",
+        "E06000003"
+      ],
+      "licence_reference": "https://www.ons.gov.uk/methodology/geography/licences",
+      "licence_status": "Reference in ONS asset metadata retrieved; full geographic terms blocked HTTP 403"
+    },
+    {
+      "name": "December 2015 wards",
+      "url": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Wards_Dec_2015_FCB_GB_2022/FeatureServer/0/query?where=lad15cd%3D%27E06000003%27+AND+wd15nm+IN+%28%27South+Bank%27%2C%27Grangetown%27%2C%27Eston%27%29&outFields=%2A&outSR=27700&f=geojson&returnGeometry=true",
+      "raw_file": "wards2015.geojson",
+      "sha256": "220b677ccf64546f8689cc78db55a4cb6ab0352ff94c9ee4d4de9dec335a2b3f",
+      "bytes": 54268,
+      "file_saved_utc": "2026-10-13T03:12:54.864391+00:00",
+      "crs": "EPSG:27700",
+      "feature_codes": [
+        "E05001508",
+        "E05001509",
+        "E05001522"
+      ],
+      "licence_reference": "https://www.ons.gov.uk/methodology/geography/licences",
+      "licence_status": "Reference in ONS asset metadata retrieved; full geographic terms blocked HTTP 403"
+    },
+    {
+      "name": "December 2022 wards",
+      "url": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Wards_December_2022_Boundaries_UK_BFC/FeatureServer/0/query?where=LAD22CD%3D%27E06000003%27+AND+WD22CD+IN+%28%27E05012441%27%2C%27E05012442%27%2C%27E05012456%27%29&outFields=%2A&outSR=27700&f=geojson&returnGeometry=true",
+      "raw_file": "wards2022.geojson",
+      "sha256": "f331dc33e649fdf79ea3d77bb2902e979a798e6278f46113d87a007d475d4b16",
+      "bytes": 92848,
+      "file_saved_utc": "2026-10-13T03:16:36.209117+00:00",
+      "crs": "EPSG:27700",
+      "feature_codes": [
+        "E05012441",
+        "E05012442",
+        "E05012456"
+      ],
+      "licence_reference": "https://www.ons.gov.uk/methodology/geography/licences",
+      "licence_status": "Reference in ONS asset metadata retrieved; full geographic terms blocked HTTP 403"
+    }
+  ],
+  "population_date_availability": {
+    "NM_2002_1": {
+      "years": [
+        1991,
+        1992,
+        1993,
+        1994,
+        1995,
+        1996,
+        1997,
+        1998,
+        1999,
+        2000,
+        2001,
+        2002,
+        2003,
+        2004,
+        2005,
+        2006,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "endpoint": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2002_1/time.def.sdmx.json"
+    },
+    "NM_2010_1": {
+      "years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "endpoint": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2010_1/time.def.sdmx.json"
+    },
+    "NM_2014_1": {
+      "years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "endpoint": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2014_1/time.def.sdmx.json"
+    }
+  },
+  "integrity_note": "Historical member CRCs checked through zipfile; HTTPS verified; whole archive MD5s not verified by partial retrieval.",
+  "revision_probe": {
+    "month": "2023-12",
+    "snapshots": [
+      "2023-12",
+      "2026-08"
+    ],
+    "byte_identical": false,
+    "columns_changed_among_matching_nonempty_ids": [
+      "Last outcome category"
+    ],
+    "limitation": "Probe does not establish a complete revision history or identifier uniqueness for all rows."
+  }
+}

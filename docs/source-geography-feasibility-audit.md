@@ -1,0 +1,110 @@
+# Source, geography and feasibility audit
+
+Audit date: 13 October 2026 (Africa/Lagos). Requested coverage: January 2015 through the latest published street-crime month in 2026. Status: **limited feasibility pilot completed; full-series comparability, geographic licence terms and population alignment remain unresolved**. A current Cleveland street file and selected historical members have been acquired and inspected; no research analysis has been performed. This document concerns recorded police crime and anti-social behaviour (ASB), independently of news events.
+
+## Pilot evidence update
+
+The [limited feasibility pilot](feasibility-pilot.md) now documents an inspected August 2026 Cleveland file, representative historical members, a minimum four-snapshot archive cover (about 6.2 GB at listed sizes), official boundary codes/vintages, a [labelled review map](maps/proposed-areas-2025.png), population candidates and unresolved gates. Exact successful requests, hashes and checks are in the [pilot evidence manifest](pilot-evidence.json). Raw files remain outside Git. The access-history table below records initial failures, not current availability.
+
+Confirmed pilot evidence supports parsing feasibility: sampled street files share columns and observed category labels. It also exposes revisions in the same month's outcome field across snapshots and changing ward extents. Download success and common headers do not establish longitudinal comparability. Rates remain unresolved: population table geography differs from the proposed 2025 polygons and no suitable 2026 estimate was advertised. Full acquisition has not begun.
+
+## Evidence and access status
+
+The initial HTTPS requests below were executed on 13 October 2026 using Python 3.12 `urllib.request`, normal TLS verification and a 25-second timeout. Each failed with `Tunnel connection failed: 403 Forbidden`. This is a proxy access failure before receipt of the source; it does not establish that the source is unavailable publicly. These were initial failures. Subsequent requests on the same date succeeded for police metadata, download/archive listings, about/API documentation and the ONS geography portal. See the updated register and pilot for current evidence; selected raw crime members have now been inspected.
+
+| Intended source | URL attempted | Intended evidence | Result |
+| --- | --- | --- | --- |
+| Police publication metadata | https://data.police.uk/api/crime-last-updated | Latest published street-crime month | Blocked: proxy 403 |
+| Police availability metadata | https://data.police.uk/api/crimes-street-dates | Advertised month/force availability | Blocked: proxy 403 |
+| Police downloads | https://data.police.uk/data/ | Monthly bulk files and actual selectable coverage | Blocked: proxy 403 |
+| Police archive candidate | https://data.police.uk/data/archive/ | Historic retention or archive access; endpoint existence unverified | Blocked: proxy 403 |
+| Police source notes | https://data.police.uk/about/ | Licence, anonymisation and quality caveats | Blocked: proxy 403 |
+| Police API documentation | https://data.police.uk/docs/ | Endpoint semantics, category and geographic limits | Blocked: proxy 403 |
+| ONS population estimates | https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates | Denominators, vintages, revisions and coverage | Blocked: proxy 403 |
+| ONS Open Geography Portal | https://geoportal.statistics.gov.uk/ | Dated authority, ward, LSOA and OA boundaries and lookups | Blocked: proxy 403 |
+| Redcar and Cleveland council | https://www.redcar-cleveland.gov.uk/elections-and-voting/electoral-wards | Official ward names and community relationship; page existence unverified | Blocked: proxy 403 |
+
+Additional authoritative discovery locations, **not retrieved**: Middlesbrough council (https://www.middlesbrough.gov.uk/), Local Government Boundary Commission for England (https://www.lgbce.org.uk/), Nomis census tables (https://www.nomisweb.co.uk/), and the Open Government Licence text (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+
+### Licence and source register requirements
+
+The retrieved police about page identifies Open Government Licence v3.0 for crime/ASB and stop-and-search publications. Nomis population reuse terms were retrieved (see pilot), while full geographic/council asset terms remain unverified; the police licence cannot establish permissions for those assets. Geographic products can include separate OS copyright and attribution conditions. Census tables, population estimates and boundary files each need their own verified licence, required attribution and version. No third-party mirror or news account substitutes for provenance.
+
+For every subsequently retrieved asset, record exact download and metadata URLs, publisher, UTC retrieval timestamp, HTTP status, publication/reference date, licence URL and attribution, geography vintage, covered months/areas, filename, bytes and SHA-256. Record this failed audit attempt separately from successful retrieval. Resolve direct dataset URLs before acquisition; portal landing pages are discovery sources, not reproducible download specifications.
+
+## Source register: endpoints, coverage and acquisition route
+
+Updated 13 October 2026 (Africa/Lagos). Police metadata, download/archive listings, source notes and API documentation returned HTTP 200, as did the ONS geography landing page. ONS population and Redcar council pages returned HTTP 403 on recheck. The pilot subsequently retrieved selected street members, scoped ONS polygons and small Nomis population queries; see the pilot for successful asset evidence. “Expected” formats are not inspected file contents. Advertised dates are not verified complete records.
+
+| Product | Exact endpoint/download or unresolved asset | Available dates / vintage | Format | Geographic coverage | Restrictions and automatic/manual route |
+| --- | --- | --- | --- | --- | --- |
+| Latest police publication metadata | `https://data.police.uk/api/crime-last-updated` | Inspected response: `{"date":"2026-08-01"}`; August 2026 | JSON, inspected | Service publication metadata, not force completeness | Automatic GET verified; HTTP 200. |
+| Police availability metadata | `https://data.police.uk/api/crimes-street-dates` | Inspected response: 36 months, September 2023–August 2026 | JSON, inspected | Month list and stop-and-search force lists; latest list excludes Cleveland | Automatic GET verified; HTTP 200. Does not enumerate complete street-crime/outcome coverage by force. |
+| Current street crime / ASB bulk export | `https://data.police.uk/data/`; generated ZIP `https://policeuk-data.s3.amazonaws.com/download/bc1198b715202d1e647cd36724a7a5845fe153cd.zip` (potentially temporary) | Selector offers September 2023–August 2026; Cleveland selectable; August 2026 member inspected | ZIP/CSV confirmed by the inspected August 2026 export | Selected forces, with 2021 LSOA fields per publisher; spatially filter to approved areas | Automatic form submission and progress polling exercised; generated S3 download and selected CSV inspected. Exact job/download URL is in the pilot manifest. |
+| Spatial street-crime API alternative | Documented template: `https://data.police.uk/api/crimes-street/all-crime?date={YYYY-MM}&poly={lat,lon:lat,lon:...}` | Live metadata window September 2023–August 2026; individual query completeness untested | JSON per API documentation | Requested polygon of approximate published points; BTP records can occur within force boundaries | Automatic requests possible; no crime query executed. Documentation: custom area above 10,000 crimes returns 503; GET above 4094 characters returns 400, complex polygons may use POST. Check rate limits before implementation. |
+| Outcomes, later milestone only | Custom export `https://data.police.uk/data/`; exact generated URL unresolved; archive URLs below | Separate member/month coverage unverified | Separate CSVs per publisher; archive bytes uninspected | Selected forces; publisher says BTP and PSNI outcomes unavailable | Portal HTTP 200. Manual export selection then conditional automation. Street CSV latest-outcome field is not full outcome history. |
+| Stop-and-search, later milestone only | Custom export `https://data.police.uk/data/`; exact generated URL unresolved; archive URLs below | About page states December 2014–August 2026 overall; Cleveland absent from latest availability list | Separate CSVs per publisher | Subset of England/Wales forces; not all force/month combinations | Portal HTTP 200. Conditional automatic acquisition after selection; Cleveland coverage unresolved. No acquisition for this milestone. |
+| Historical archive snapshots, all products | Listing `https://data.police.uk/data/archive/`; exact linked examples `https://data.police.uk/data/archive/2015-01.zip` and `https://data.police.uk/data/archive/2026-08.zip` | Links December 2013–August 2026. January 2015 snapshot advertises December 2010–January 2015; August 2026 snapshot advertises September 2023–August 2026 | ZIP/CSV; selected members retrieved by checked byte ranges | Published force/product collections; selected Cleveland street members verified, complete coverage unresolved | Listing HTTP 200; binary range access verified for 2017-12, 2023-12 and 2026-08 snapshots. Whole archives remain unacquired. Example sizes 1.3 GB and 1.6 GB. Publisher warns older snapshots are out of date and recommends custom download. Archive use needs explicit vintage/comparability review. |
+| Authority and ward boundaries | `https://geoportal.statistics.gov.uk/`; exact scoped FeatureServer query URLs in pilot manifest | May 2025 BFC V2 selected; December 2015/2022 ward probes also retrieved | GeoJSON, EPSG:27700 | Middlesbrough E06000002; Redcar and Cleveland E06000003; scoped South Bank, Grangetown, Eston wards | FeatureServer queries verified; proposed extents require community review. Geographic licence reference retrieved but full terms blocked HTTP 403. |
+| OA/LSOA boundaries and lookups | `https://geoportal.statistics.gov.uk/`; exact asset URLs unresolved | 2011/2021 are candidate geography vintages, not verified asset availability | Expected vector boundaries/tabular lookups; actual formats unknown | Official statistical units; filter to approved areas | Portal accessible, assets untested. Manual version selection then automatic resolved downloads. |
+| Annual population estimates | `https://www.nomisweb.co.uk/api/v01/dataset/NM_2002_1.data.csv` and `.../NM_2014_1.data.csv`; exact parameterised requests in pilot manifest | Authority metadata 1991–2025; 2021-based small-area metadata 2011–2024 | CSV observations and JSON metadata inspected | Authority E06000002 on April 2023 geography; proposed three ward codes on 2022 geography | Small official queries succeeded. ONS landing page still HTTP 403. Geometric/time alignment and 2026 rates unresolved. |
+| Census snapshot denominators | `https://www.nomisweb.co.uk/`; exact table/API request unresolved | Candidate reference years 2011/2021; available assets unverified | Table export/API format unresolved | Official selected statistical units, not community-name populations | Not retrieved. Manual table/population-universe/geography selection, then documented automatic query or manual official export. |
+| Community interpretation / boundary changes | Council URLs in access history; `https://www.lgbce.org.uk/`; exact map/report assets unresolved | Effective dates unknown | Expected HTML/PDF/maps; files unverified | Council/ward review extents, not definitive community polygons | Redcar page HTTP 403 on recheck; other pages not retrieved. Locate/download official reports, then manual interpretation and boundary approval. |
+
+Police metadata, a small current export, checked historical range members, scoped polygons and small population requests are automatically retrievable through the exercised routes. Unknown direct asset URLs remain explicit audit gaps, not invented endpoints. Check licence, usage limits and access terms for each asset. The police about page confirms OGL v3.0; full geographic licence terms remain unresolved; the Nomis population reuse notice was retrieved. Initial source access failures and successful metadata/listing retrievals both occurred on 13 October 2026; retrieval or file-save timestamps for inspected raw assets are recorded in the pilot manifest; unacquired assets have no retrieval date.
+
+### Automatic acquisition versus manual input
+
+Automatic acquisition means a reproducible request to a verified endpoint, not scraping whatever a portal happens to display. Metadata requests and stable official file downloads are suitable candidates. Portal export jobs or GIS APIs require a documented contract, exact parameters and a successful representative check before automation can be promised.
+
+Manual inputs are the approved community definition, boundary vintage, source edition/table selection and any officially exported file whose service lacks a usable automated route. For a manual file, record the official source/export page, all selections, acquisition timestamp, original filename, checksum, licence and covered dates. Validate it through the same pipeline as automatic downloads. Do not ask users to type crime counts, supply guessed missing months or substitute undocumented spreadsheets. Manual source-selection decisions should be committed as configuration; raw assets should remain outside Git.
+
+### Comparability is a separate gate
+
+A successful HTTP response, checksum, readable CSV or complete download proves transport or file integrity only. It does **not** prove that two assets measure the same population, geography, period or recorded event. Before admitting any comparison, document each input's unit of observation, inclusion/exclusion rules, date meaning, force/product coverage, recording and category definitions, anonymisation, boundary vintage, revisions and population universe. Mark each proposed comparison as compatible, compatible only with an explicit transformation, incompatible, or unresolved, with reasons and supporting metadata.
+
+In particular, reconcile bulk versus API semantics before combining them; compare outcomes and stop-and-search only within their own products; inspect missing months and category changes before trends; and match numerator geography and time coverage to denominator geography and reference period before rates. Archive/live continuity requires independent checks even if both download successfully. Keep an acquisition-status matrix separate from the comparability decision log. An unresolved comparability check blocks the affected comparison, not unrelated validated work.
+
+## Latest month and historical feasibility
+
+**Latest advertised police street-crime month: August 2026.** The inspected publication endpoint returns `{"date":"2026-08-01"}`; both the selector and availability response end in August 2026. This confirms the service publication month, not complete Cleveland files. Cleveland is absent from the latest stop-and-search force list; do not infer that product's availability from street crime.
+
+The live selector covers **September 2023–August 2026 (36 months)**. The archive listing includes every requested January 2015–August 2026 snapshot label (140), but filenames denote publication snapshots with overlapping multi-year contents, not single-month datasets. The January 2015 archive advertises December 2010–January 2015 and 1.3 GB; the August 2026 archive advertises September 2023–August 2026 and 1.6 GB. These are listing statements, not verified binary downloads or Cleveland coverage.
+
+The pilot has inspected January 2015 and several later Cleveland members, but has not verified every requested month or any member of the selected 2020 snapshot. The minimum advertised cover and revision policy are documented in the pilot.
+
+The publisher explicitly warns that older snapshots are out of date and should not be used, recommends custom downloads for most purposes, and provides older copies for archival purposes. Full-period recovery therefore needs an explicit decision about using historical vintages and their limitations; it cannot be described as a uniform current dataset. Select a small covering set of snapshots rather than 140 large overlapping downloads, preserve originals, verify published hashes and ZIP integrity, and inspect force/product/month members. Never concatenate snapshots without a revision and overlap policy. If missing months or incomparable vintages remain, shorten the comparable window or seek publisher clarification.
+
+## Proposed geography for review
+
+Middlesbrough local authority is one analysis area. South Bank, Grangetown and Eston are proposed separate communities in neighbouring Redcar and Cleveland; the pilot verifies all three proposed wards belong to Redcar and Cleveland, with current codes and vintage recorded below. These communities must not be treated as neighbourhoods inside the Middlesbrough authority polygon.
+
+| Requested area | Recommended initial operational definition | Review needed |
+| --- | --- | --- |
+| Middlesbrough | May 2025 BFC V2 authority, E06000002 | Check authority extent changes since 2015; select appropriate boundary resolution |
+| South Bank | May 2025 BFC V2 ward, E05012456 | Check extent against the named settlement and historic ward versions |
+| Grangetown | May 2025 BFC V2 ward, E05012442 | Check settlement extent, industrial land and historic versions |
+| Eston | May 2025 BFC V2 ward, E05012441 | Check whether the community extends into adjoining wards |
+
+These are **ward-based proxies**, not confirmed settlement boundaries. A community is a social/place name; a ward is an electoral division; an OA/LSOA is a census/statistical area. Their names and extents are not interchangeable. Do not invent polygons from postcode labels, neighbourhood centroids or a radius around a town centre.
+
+Preferred first option: use one verified ward vintage as fixed operational community proxies throughout the time series, title results “South Bank ward proxy” etc., and publish maps and codes for review. Check council maps and boundary-review reports before adopting that vintage. Alternative: agree settlement polygons built from whole census OAs/LSOAs with official maps and local review. This is more work but can make denominators defensible. No final community polygon is approved by this audit.
+
+Fixed boundaries allow comparable geography over time; historical ward polygons instead describe changing administrative populations and must be reported as separate versions. Catalogue effective dates, ward creation/abolition and code/name changes. Do not assume a shared name means an unchanged polygon. Check both electoral reviews and the 2011-to-2021 statistical geography transition, including splits, merges and lookup limitations.
+
+## Risks to comparisons
+
+- **Anonymised geography:** published street coordinates are approximate, not exact incident addresses. Snapping can move incidents across borders; some records lack usable coordinates. Boundary assignment cannot recover the true location. Quantify ambiguous and unlocated records and test a documented boundary-distance sensitivity band.
+- **Coverage:** street data are published police records, not a census of crime or victimisation. Force-wide figures, unlocated records and crimes outside the published location scope may differ from local street counts. Obtain publisher notes on excluded offences and reporting practices.
+- **Missing months:** maintain expected versus available versus successfully parsed months for every product and force. Empty areas, missing files, failed downloads and genuine zero observations are distinct.
+- **Categories:** retrieve category definitions for applicable periods, inspect actual labels/codes, and document changes in classifications or recording practice. Retain original categories; only harmonise with an explicit versioned mapping. Broad totals may still be affected by recording changes.
+- **ASB:** report it as its own series and denominator convention. Do not fold ASB into a crime total, infer unique incidents from missing identifiers, or treat it as an outcome record.
+- **Outcomes and stop-and-search:** these have different units, timing, coverage and geography. Keep separate; outcome publication month is not necessarily incident month and multiple outcome rows must not inflate crime counts.
+- **Population:** ONS mid-year authority estimates and suitable small-area estimates are candidate annual denominators; census 2011/2021 populations are snapshots, not annual estimates. Confirm exact years and geographic bases. Avoid interpolated precision or blanket use of 2021 populations for 2015–2026.
+- **2026:** use only the confirmed published months, compare the same calendar months in earlier years and flag incomplete periods. Do not describe partial counts as annual totals or annualise by default. Publication coverage and population-reference coverage are separate constraints.
+
+## Feasibility decision and next gate
+
+The pilot demonstrates file parsing and official polygon retrieval, but full-period Cleveland coverage/comparability, full geographic licence terms, legal effective dates of historic boundary changes and denominator alignment remain unresolved; the latest advertised police month is confirmed as August 2026. Required source-domain additions have been saved to the cloud configuration draft. Apply settings and verify access before claiming those questions answered; further downloads may expose additional asset-host requirements.
+
+Before implementation approval, complete the source register, confirm the available month matrix, map and review the community proxies, inspect changes and identify a compatible denominator strategy. The first milestone must remain provisional until these checks succeed. No full analysis or dashboard should begin merely because these documents exist.
