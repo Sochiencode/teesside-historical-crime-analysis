@@ -1,10 +1,10 @@
 # Proposed reproducible methodology
 
-Status: proposal for review, 13 October 2026. Read the [source and feasibility audit](source-geography-feasibility-audit.md) for the unresolved access and geography gate. This document does not claim that any acquisition or analysis has run.
+Status: proposal for review, 13 October 2026. Read the [source and feasibility audit](source-geography-feasibility-audit.md) for the unresolved access and geography gate. The [limited pilot](feasibility-pilot.md) has exercised small acquisition and boundary checks. This methodology remains a proposal for full acquisition and research analysis, which have not run.
 
 ## Workflow and software
 
-After audit approval, use Python with `requests` or `httpx`, `pandas`, `pyarrow`, `geopandas`, `shapely` and `pyproj`; use DuckDB when useful for partitioned queries. Add Streamlit only in the later dashboard milestone. Choose compatible versions, commit a lockfile in that implementation milestone, and document the supported Python version. No dependencies are needed to review this documents-only milestone.
+After audit approval, use Python with `requests` or `httpx`, `pandas`, `pyarrow`, `geopandas`, `shapely` and `pyproj`; use DuckDB when useful for partitioned queries. Add Streamlit only in the later dashboard milestone. Choose compatible versions, commit a lockfile in that implementation milestone, and document the supported Python version. Reviewing the documents requires no runtime dependencies. The permitted pilot adds small acquisition scripts and a boundary-only review map; its dependencies and executed commands are documented separately.
 
 Separate commands for source discovery, acquisition, validation, geography preparation, assignment, aggregation and dashboard startup. Supply configuration for date range, source force, products, area definitions and boundary vintage. Preserve immutable inputs; all transformed outputs should be rebuildable. Each stage should fail clearly when required coverage or schemas are absent, rather than produce a plausible empty dashboard.
 
@@ -17,6 +17,12 @@ Keep source ZIP/CSV files unchanged outside Git, grouped by source/product/month
 Store a manifest in JSON/CSV with source URLs, retrieval timestamps, reference periods, licence, response metadata, bytes, SHA-256 and validation status. Preserve archive-member names and record counts. Download to temporary paths, verify, then atomically rename; retry only transient failures with bounded backoff. Skip existing content only after checksum/manifest validation. A rerun must not silently replace a revised publisher file: retain the old version and record a new retrieval.
 
 Use compressed Parquet for normalised working data, partitioned by product/year/month; retain coordinates and source provenance. Keep street crime, outcomes and stop-and-search in separate datasets and schemas. DuckDB can query Parquet without a long-running database. GeoPackage is suitable for a small reviewed boundary collection with explicit CRS and vintage. Keep raw files and large working outputs out of commits. Git should hold code, configuration, small manifests, documentation and test fixtures with appropriate licences; document storage location and backup requirements.
+
+## Pilot-derived source-vintage policy
+
+The pilot identifies a minimum four-snapshot advertised cover, with September–December 2023 overlapping. Proposed canonical selection uses the newest of the selected snapshots for each `(product, force, month)`, retaining every raw vintage without concatenation. This does not guarantee the latest historic revisions. December 2023 sample files already demonstrate outcome-field revision across snapshots. Verify all member inventories, gaps, schemas and recording conventions before treating the chosen blocks as a comparable series.
+
+The review map uses May 2025 ward proxies. Retrieved population tables return 2022 ward geography, whose polygons differ even where codes match. Consider adopting verified 2022 fixed ward polygons for future population rates, or resolve a justified alignment; do not assume the map and denominator extents coincide. No 2026 denominator was advertised in the relevant inspected tables. Count-based preparation remains possible while rate alignment is unresolved.
 
 ## Acquisition and comparability gates
 
@@ -50,4 +56,4 @@ Select denominators consistent with each observation period and geography vintag
 
 Gate 1: resolve blocked authoritative access; verify latest month, achievable historical coverage, licences, boundary versions and proposed maps. Gate 2: approve definitions and denominator policy before writing acquisition/analysis code. Later milestones can then implement and execute acquisition, validation and analysis, followed by a Streamlit dashboard with separate product views, explicit ASB and matching-month 2026 comparisons.
 
-Every later report should distinguish confirmed results, assumptions, missingness, failed checks and unrun checks. Keep a transformation log and reproducible run metadata including source hashes, software versions, configuration and code commit. The dashboard must carry the same limitations as the underlying analysis. This pull request contains documentation only; it must not be merged automatically.
+Every later report should distinguish confirmed results, assumptions, missingness, failed checks and unrun checks. Keep a transformation log and reproducible run metadata including source hashes, software versions, configuration and code commit. The dashboard must carry the same limitations as the underlying analysis. The pull request now contains the audit, methodology, limited pilot scripts, evidence metadata and a boundary-only review map. It must not be merged automatically.
